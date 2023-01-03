@@ -49,7 +49,8 @@ jobRouter.get("/jobsortdesc",async(req,res)=>{
 })
 jobRouter.get("/jobfilter",async(req,res)=>{
     try {
-        let jobs= await jobModel.find({level:"senior"});
+        const {level}=req.body;
+        let jobs= await jobModel.find({level:level});
       return  res.send(jobs)
         
       } catch (error) {
